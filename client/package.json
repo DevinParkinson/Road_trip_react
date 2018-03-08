@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "materialize-css": "^0.100.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-materialize": "^2.1.0",
     "react-scripts": "1.1.1"
   },
+  "proxy": "http://localhost:3001",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

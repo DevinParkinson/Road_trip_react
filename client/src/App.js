@@ -1,20 +1,56 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Trips from './Trips'
+import Locations from './Locations'
 
 class App extends Component {
+  state = { view: 'Trips' }
+
+  componentDidmount() {
+    //make call to server to get Trips
+  }
+
+  addTrip = (name) => {
+      const { trips } = this.state;
+    const id = Math.floor(( 1 + Math.random()) * 0x1000).toString()
+    this.setState({ trips: [...trips, { id, name }] });
+  }
+
+  updateTrip = (id) => {
+    let trips = this.state.trips.map( t => {
+      if ( t.id === id )
+      return t;
+    })
+    this.setState({ trips });
+  }
+
+  deleteTrip = (id) => {
+    const { trips } = this.state;
+    this.setState({ trips: trips.filter(t => t.id !== id)
+    })
+  }
+
+
+  toggleView = (view) => {
+    this.setState({ view })
+  }
+
+  show = () => {
+    switch (this.state.view) {
+      case 'Trips':
+      return <Trips />
+      case 'Locations':
+      return <Locations />
+    }
+  }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    <div>
+      { ['Trips', 'Location'].map( view => {
+          <button key={view} onClick={() => toggleView(view) }>{view}</button>
+        })
+      }
+      { this.show() }
+    </div>
   }
 }
 
