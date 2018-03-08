@@ -44,6 +44,7 @@ class App extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     <div>
       { ['Trips', 'Location'].map( view => {
           <button key={view} onClick={() => toggleView(view) }>{view}</button>
@@ -51,6 +52,15 @@ class App extends Component {
       }
       { this.show() }
     </div>
+=======
+    return (
+      
+      <div>
+
+        
+      </div>
+    );
+>>>>>>> fix database tables
   }
 }
 

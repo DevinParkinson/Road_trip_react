@@ -4,8 +4,7 @@ class CreateAddresses < ActiveRecord::Migration[5.1]
       t.string :city
       t.string :state
       t.string :zip
-      t.string :belongs_to
-      t.string :location
+      t.belongs_to :locations, foreign_key: true
 
       t.timestamps
     end

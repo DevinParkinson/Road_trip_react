@@ -1,0 +1,32 @@
+Arguments: 
+  /usr/local/bin/node /Users/ducky/.yarn/bin/yarn.js start
+
+PATH: 
+  /Users/ducky/.yarn/bin:/Users/ducky/.config/yarn/global/node_modules/.bin:/Users/ducky/.rbenv/shims:/Users/ducky/.rbenv/bin:/Applications/Postgres.app/Contents/Versions/10/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  9.5.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: Couldn't find a package.json file in "/Users/ducky/Desktop/DPL/week5/trip_tracker/Road_trip_react"
+      at new MessageError (/Users/ducky/.yarn/lib/cli.js:186:110)
+      at /Users/ducky/.yarn/lib/cli.js:40048:15
+      at Generator.next (<anonymous>)
+      at step (/Users/ducky/.yarn/lib/cli.js:98:30)
+      at /Users/ducky/.yarn/lib/cli.js:109:13
+      at <anonymous>
