@@ -1,9 +1,10 @@
 class AddressController < ApplicationController
   def index
+    @address = Address.all
   end
 
   def show
-
+    
   end
 
   def create
