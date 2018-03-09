@@ -1,33 +1,60 @@
-import React from 'react';
+import React from 'react'
 
-const styles = {
-  complete: {
-    textDecoration: 'line-through',
-    color: 'grey'
-  },
-  pointer: { cursor: 'pointer' }
+class Trip extends React.Component {
+  state = {
+    editing: false,
+    name: this.props.name,
+  }
+
+  handleChange = (e) => {
+    let { name, value } = e.target;
+    this.setState({ [name]: value })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { updateTrip, id } = this.props;
+    updateTrip(id, this.state.name)
+    this.setState({ editing: false })
+  }
+
+  render() {
+    if (this.state.editing) {
+      return(
+        <div>
+          <form
+            className="col l4"
+            onSubmit={this.handleSubmit}
+          >
+            <input
+              value={this.state.name}
+              onChange={this.handleChange}
+              name="name"
+              type="text"
+            />
+          </form>
+          <button
+            className="btn"
+            onClick={() => this.setState({ editing: false })}
+          >Cancel</button>
+        </div>
+      )
+    } else {
+      return(
+        <div>
+          <h1>{this.props.name}</h1>
+          <button
+            className="btn"
+            onClick={() => this.setState({ editing: true })}
+          >Edit</button>
+          <button
+            className="btn"
+            onClick={() => this.props.deleteTrip(this.props.id)}
+          >Delete</button>
+        </div>
+      )
+    }
+  }
 }
-
-const Trip = ({ id, complete, name, updateTrip, deleteTrip }) => (
-  <div className="col s12">
-    <div className="col m8">
-      <div style={ complete ? styles.complete : {} } className="center">
-        {name}
-      </div>
-    </div>
-    <div className="col m2">
-      <input
-        id={`item-${id}`}
-        type="checkbox"
-        defaultChecked={complete}
-        onClick={() => updateTrip(id)}
-      />
-      <label htmlFor={`item-${id}`}></label>
-    </div>
-    <div style={ styles.pointer } className="col m1" onClick={() => deleteTrip(id)}>
-      X
-    </div>
-  </div>
-)
 
 export default Trip;

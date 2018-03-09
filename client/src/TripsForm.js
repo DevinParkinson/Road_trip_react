@@ -4,12 +4,13 @@ class TripForm extends React.Component {
   state = { name: '' }
 
   handleChange = (e) => {
-    this.setState({ name: e.target.value });
+    let { name, value } = e.target
+    this.setState({ [name]: value })
   }
 
   handleSubmit = (e) => {
-    e.preventDefault();
-    this.props.addItem(this.state.name);
+    e.preventDefault()
+    this.props.addTrip(this.state.name);
     this.setState({ name: '' })
   }
 
@@ -21,6 +22,7 @@ class TripForm extends React.Component {
           required
           value={this.state.name}
           onChange={this.handleChange}
+          name="name"
         />
       </form>
     )

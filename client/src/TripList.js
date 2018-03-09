@@ -1,9 +1,9 @@
 import React from 'react';
-import Todo from './Trip';
+import Trip from './Trips';
 
 const TripList = ({ trips, updateTrip, deleteTrip }) => (
   <div className="row">
-    { trips.map( trip => 
+    { trips.map( trip =>
         <Trip
           key={trip.id}
           {...trip}

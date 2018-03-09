@@ -1,66 +1,57 @@
 import React, { Component } from 'react';
-import Trips from './Trips'
-import Locations from './Locations'
+import Trips from './Trips';
+import Locations from './Locations';
+import TripList from './TripList.js';
+import TripsForm from './TripsForm.js';
+import axios from 'axios';
 
 class App extends Component {
-  state = { view: 'Trips' }
+  state = { trips: [] }
 
-  componentDidmount() {
-    //make call to server to get Trips
+  componentDidMount() {
+    axios.get('/api/trips')
+      .then( res => {
+        this.setState({ trips: res.data })
+      })
   }
 
   addTrip = (name) => {
-      const { trips } = this.state;
-    const id = Math.floor(( 1 + Math.random()) * 0x1000).toString()
-    this.setState({ trips: [...trips, { id, name }] });
+    let trip = { name }
+      axios.post('/api/trips', trip)
+      .then( res => {
+        this.setState({ trips: [res.data, ...this.state.trips]})
+          })
   }
 
-  updateTrip = (id) => {
+  updateTrip = (id, name) => {
+    let trip = { name }
+    axios.put(`/api/trips/${id}`, trip)
+      .then( res => {
     let trips = this.state.trips.map( t => {
       if ( t.id === id )
-      return t;
+      return res.data
+      return t
     })
-    this.setState({ trips });
+      this.setState({ trips });
+    })
   }
 
   deleteTrip = (id) => {
     const { trips } = this.state;
-    this.setState({ trips: trips.filter(t => t.id !== id)
+    axios.delete(`/api/trips/${id}`)
+      .then( res => {
+    this.setState({ trips: trips.filter(t => t.id !== id)})
     })
   }
 
-
-  toggleView = (view) => {
-    this.setState({ view })
-  }
-
-  show = () => {
-    switch (this.state.view) {
-      case 'Trips':
-      return <Trips />
-      case 'Locations':
-      return <Locations />
-    }
-  }
-
   render() {
-
-    <div>
-      { ['Trips', 'Location'].map( view => {
-          <button key={view} onClick={() => toggleView(view) }>{view}</button>
-        })
-      }
-      { this.show() }
-    </div>
-
     return (
-      
-      <div>
-
-        
-      </div>
+    <div className="container">
+      <TripList trips={this.state.trips}/>
+      <TripsForm addTrip={this.addTrip}/>
+      <Trips />
+    </div>
     );
-
   }
 }
 
