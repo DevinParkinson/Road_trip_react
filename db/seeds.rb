@@ -15,4 +15,20 @@ Trip.create(
   name: 'In a New York State of Mind'
 )
 
+Trip.create(
+  name: 'Worst trip ever!'
+)
+
+Location.create(
+  name: 'Disney World'
+)
+
+Location.create(
+  name: 'Statue of Liberty'
+)
+
+Location.create(
+  name: 'Death Valley'
+)
+
 #eventually add location and address information

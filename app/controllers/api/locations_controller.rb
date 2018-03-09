@@ -3,7 +3,6 @@ class Api::LocationsController < ApplicationController
   end
 
   def show
-    
   end
 
   def create
@@ -13,5 +12,5 @@ class Api::LocationsController < ApplicationController
   end
 
   def destroy
-  end
+  end  
 end
