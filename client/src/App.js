@@ -45,6 +45,9 @@ class App extends Component {
 
   render() {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> trips list/forms/.js
     <div>
       { ['Trips', 'Location'].map( view => {
           <button key={view} onClick={() => toggleView(view) }>{view}</button>
@@ -52,6 +55,7 @@ class App extends Component {
       }
       { this.show() }
     </div>
+<<<<<<< HEAD
 =======
     return (
       
@@ -61,6 +65,8 @@ class App extends Component {
       </div>
     );
 >>>>>>> fix database tables
+=======
+>>>>>>> trips list/forms/.js
   }
 }
 
