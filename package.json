@@ -21,11 +21,8 @@
   },
   "homepage": "https://github.com/DevinParkinson/Road_trip_react#readme",
   "dependencies": {
-<<<<<<< HEAD
     "material": "^0.2.6",
-    "react-materialize": "^2.1.0"
-  }
-=======
+    "react-materialize": "^2.1.0",
     "axios": "^0.18.0",
     "debug": "^3.1.0",
     "follow-redirects": "^1.4.1",
@@ -33,5 +30,4 @@
     "ms": "^2.0.0"
   },
   "devDependencies": {}
->>>>>>> Trips list
 }
