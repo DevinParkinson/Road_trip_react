@@ -3,6 +3,15 @@ class Api::TripsController < ApplicationController
     render json: Trip.all
   end
 
+  def show  #added by Chris
+    @trips = Trip.find(pararms[:id])
+    @location = @Trip.locations.all
+    
+    @everything = {@trip, @location}
+    render json: @everything
+  end
+
+
   def create
     trip = Trip.new(trip_params)
     if trip.save

@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/DevinParkinson/Road_trip_react/issues"
   },
-  "homepage": "https://github.com/DevinParkinson/Road_trip_react#readme"
+  "homepage": "https://github.com/DevinParkinson/Road_trip_react#readme",
+  "dependencies": {
+    "material": "^0.2.6",
+    "react-materialize": "^2.1.0"
+  }
 }
