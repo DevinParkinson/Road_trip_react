@@ -27,13 +27,13 @@ class App extends Component {
     let trip = { name }
     axios.put(`/api/trips/${id}`, trip)
       .then( res => {
-    let trips = this.state.trips.map( t => {
-      if ( t.id === id )
-      return res.data
-      return t
-    })
+        let trips = this.state.trips.map( t => {
+          if (t.id === id)
+            return res.data
+          return t
+        })
       this.setState({ trips });
-    })
+      })
   }
 
   deleteTrip = (id) => {
@@ -47,9 +47,15 @@ class App extends Component {
   render() {
     return (
     <div className="container">
-      <TripList trips={this.state.trips}/>
-      <TripsForm addTrip={this.addTrip}/>
+      <TripsForm
+        addTrip={this.addTrip}
+        />
       <Trips />
+      <TripList
+        trips={this.state.trips}
+        updateTrip={this.updateTrip}
+        deleteTrip={this.deleteTrip}
+        />
     </div>
     );
   }

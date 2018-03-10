@@ -47,6 +47,7 @@ class Trip extends React.Component {
             className="btn"
             onClick={() => this.setState({ editing: true })}
           >Edit</button>
+        <br />
           <button
             className="btn"
             onClick={() => this.props.deleteTrip(this.props.id)}

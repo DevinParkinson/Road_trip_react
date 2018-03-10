@@ -3,11 +3,11 @@ class Api::TripsController < ApplicationController
     render json: Trip.all
   end
 
-  def show  
+  def show
     trips = Trip.find(pararms[:id])
     location = Trip.locations.all
-    
-    
+
+
     render json: trip, location
   end
 
@@ -22,9 +22,12 @@ class Api::TripsController < ApplicationController
   end
 
   def update
-    trip = Trip.find(params[:id])
-    trip.update(complete: !trip.complete)
-    render json: trip
+    @trip = Trip.find(params[:id])
+    if @trip.update(trip_params)
+      render json: @trip
+    else
+      render json: @trip.errors, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -35,7 +38,7 @@ class Api::TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:name)
+    params.require(:trip).permit(:name, :complete)
   end
 
 end
